@@ -51,10 +51,10 @@ architecture bit4_RC_adder_behavioral of bit4_RC_adder is
 begin
          
     result <= std_logic_vector(unsigned('0'&A) + unsigned('0'&B) + ("0000"&CI)) when T = '0' else
-         std_logic_vector(unsigned('0'&A) - unsigned('0'&B) + ("0000"&CI));
+         std_logic_vector(unsigned('0'&A) - unsigned('0'&B) - ("0000"&not(CI)));
          
     S <= std_logic_vector(unsigned(A) + unsigned(B) + ("000"&CI)) when T = '0' else
-         std_logic_vector(unsigned(A) - unsigned(B) + ("000"&CI));
+         std_logic_vector(unsigned(A) - unsigned(B) - ("000"&not(CI)));
 
     CO <= result(4);
 
